@@ -4,6 +4,7 @@
 tmp/
 cache/
 build/
+sessions/
 vendor/      # jika kamu menggunakan Composer dan mengandalkan build pipeline
 node_modules/  # jika kamu menggunakan Node.js
 

@@ -1,0 +1,34 @@
+services:
+  web:
+    build: ./apache
+    container_name: itop-web
+    volumes:
+      - ./web:/var/www/html
+      - ./sessions:/var/lib/php/sessions
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - itop-net
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3380:3306"
+    container_name: itop-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    command: ["--disable-log-bin"]
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - itop-net
+
+volumes:
+  dbdata:
+
+networks:
+  itop-net:

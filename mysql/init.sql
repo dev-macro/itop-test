@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS itop_db;
+CREATE USER 'itopuser'@'%' IDENTIFIED BY 'itoppass';
+GRANT ALL PRIVILEGES ON itop_db.* TO 'itopuser'@'%';
+FLUSH PRIVILEGES;
