@@ -1,0 +1,15 @@
+# Docker
+*.log
+*.pid
+tmp/
+cache/
+build/
+vendor/      # jika kamu menggunakan Composer dan mengandalkan build pipeline
+node_modules/  # jika kamu menggunakan Node.js
+
+# Laravel (jika applicable)
+storage/*.key
+storage/logs/
+storage/framework/
+.env
+.env.*        # jika ada beberapa environment
