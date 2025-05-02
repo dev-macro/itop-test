@@ -47,4 +47,14 @@ RUN a2enmod rewrite
 # session.save_path
 RUN echo "session.save_path = /var/lib/php/sessions" > /usr/local/etc/php/conf.d/session.ini
 
+# Menyalin entrypoint.sh dan memberikan izin eksekusi
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Menetapkan entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# Menetapkan perintah default
+CMD ["apache2-foreground"]
+
 WORKDIR /var/www/html
